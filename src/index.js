@@ -9,21 +9,21 @@ function fetchSpellbooks()
    .then(sb => sb.forEach(spellbook => {
       let newSpellbook = new Spellbook(spellbook.title)
    console.log(newSpellbook)
-   renderSpellbook(newSpellbook)
+   renderSpellbook(sb)
    })) 
 }
 
-function renderSpellbook(newSpellbook){
-   for ( let sb of newSpellbook) {
+function renderSpellbook(sb){
+   for ( let s of sb) {
 
    const sbUL = document.getElementById('spellbook-list')
    
    const sbLI = document.createElement('li')
    const p = document.createElement('p')
 
-   p.innerHTML = sb.title
-   sbLI.appendChild(p)
-   sbUL.appendChild(sbLI)
+   p.innerHTML = s.title
+   sbLI.append(p)
+   sbUL.append(sbLI)
    }
 }
 
