@@ -1,5 +1,5 @@
 class Spellbook{
-    constructor( ) {
+    constructor(title) {
         this.title = title
     }
 }
