@@ -13,8 +13,18 @@ function fetchSpellbooks()
    })) 
 }
 
-function renderSpellbook(){
+function renderSpellbook(newSpellbook){
+   for ( let sb of newSpellbook) {
+
+   const sbUL = document.getElementById('spellbook-list')
    
+   const sbLI = document.createElement('li')
+   const p = document.createElement('p')
+
+   p.innerHTML = sb.title
+   sbLI.appendChild(p)
+   sbUL.appendChild(sbLI)
+   }
 }
 
 fetchSpellbooks();
