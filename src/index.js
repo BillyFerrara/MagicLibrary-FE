@@ -9,8 +9,12 @@ function fetchSpellbooks()
    .then(sb => sb.forEach(spellbook => {
       let newSpellbook = new Spellbook(spellbook.title)
    console.log(newSpellbook)
-   renderSpellbook(Spellbook)
+   renderSpellbook(newSpellbook)
    })) 
 }
 
-function renderSpellbook()
+function renderSpellbook(){
+   
+}
+
+fetchSpellbooks();
