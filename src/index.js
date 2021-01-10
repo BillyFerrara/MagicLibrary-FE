@@ -4,5 +4,5 @@ const spellURL = 'http://localhost:3000/spells'
 //console.log('index.js')
 
 
-fetchSpellbooks();
-renderSpell();
+Spellbook.fetchSpellbooks();
+// Spell.renderSpell();
