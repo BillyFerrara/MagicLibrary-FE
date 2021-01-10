@@ -1,5 +1,5 @@
 class Spell {
-    constructor (title, description, damage_type){
+    constructor (spell){
         this.title = title,
         this.description = description,
         this.damage_type = damage_type;

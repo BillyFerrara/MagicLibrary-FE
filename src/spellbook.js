@@ -16,18 +16,19 @@ class Spellbook{
             sb.forEach(spellbook => {
             let newSpellbook = new Spellbook(spellbook)
         console.log(newSpellbook)
+        
         this.renderSpellbooks()
         })) 
 }
 
-    static renderSpellbook(){
+    static renderSpellbooks(){
         for(let spellbook of this.allSpellbooks){
             spellbook.renderSpellbook()
-            debugger
+            
         }
     }
 
-    static renderSpellbooks(){
+     renderSpellbook(){
 
 //    const sbUL = document.getElementById('spellbook-list')
    
