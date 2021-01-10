@@ -23,6 +23,7 @@ class Spellbook{
     static renderSpellbook(){
         for(let spellbook of this.allSpellbooks){
             spellbook.renderSpellbook()
+            debugger
         }
     }
 
