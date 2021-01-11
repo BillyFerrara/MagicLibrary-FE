@@ -50,6 +50,7 @@ class Spellbook{
 //    sbUL.append(sbLI, spellUL)
 
 //       console.log(s.spells)
+        const spellbookForm = document.getElementById('#spellbook-form')
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
         spellbookDiv.classList.add('sb-card')
@@ -77,6 +78,31 @@ class Spellbook{
 
         spellbookDiv.append(cardDiv, spellbookTitle, spellForm)
         sbUL.append(spellbookDiv)
+        
+   }
+
+   static formHandler(e){
+       e.preventDefault()
+       const title = document.querySelector("title").value
+       Spellbook.postSpellbook(title)
+   }
+
+   static postSpellbook(title){
+    let bodyData = {title} 
+    let configObject = {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+            "accept":"application/json"
+        },
+        body: JSON.stringify(bodyData)
+    }
+    fetch(spellbookURL, configObject)
+    .then(resp => resp.json())
+    .then(sb => {
+        let newSpellbook = new Spellbook(spellbook)
+        newSpellbook.renderSpellbook()
+    })
    }
    
 }
