@@ -81,12 +81,14 @@ class Spellbook{
         
    }
 
-   static formHandler(e){
-       e.preventDefault()
-       console.log(e)
-       const title = document.querySelector("title").value
-       Spellbook.postSpellbook(title)
-   }
+//    static formHandler(e){
+//        e.preventDefault()
+//        console.log(e.target.value)
+       
+//        const title = document.querySelector("title").value
+//        debugger
+//        Spellbook.postSpellbook(title)
+//    }
 
    static postSpellbook(title){
     let bodyData = {title} 
