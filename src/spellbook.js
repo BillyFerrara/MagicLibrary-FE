@@ -83,6 +83,7 @@ class Spellbook{
 
    static formHandler(e){
        e.preventDefault()
+       console.log(e)
        const title = document.querySelector("title").value
        Spellbook.postSpellbook(title)
    }
