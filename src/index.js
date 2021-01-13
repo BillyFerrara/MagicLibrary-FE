@@ -7,5 +7,5 @@ const createSpellbookForm = document.getElementById("Spellbook-form")
 
 Spellbook.fetchSpellbook();
 
-createSpellbookForm.addEventListener('submit', console.log('book submitted'))
-// Spell.renderSpell();
+createSpellbookForm.addEventListener('submit', Spellbook.formHandler)
+

@@ -30,33 +30,13 @@ class Spellbook{
 
      renderSpellbook(){
 
-//    const sbUL = document.getElementById('spellbook-list')
-   
-//    const sbLI = document.createElement('li')
-//    const p = document.createElement('p')
-//    const spellUL = document.createElement('ul')
-//    const spellP = document.createElement('p')
-       
-
-//     s.spells.forEach(spell => {
-//       let newSpell = new Spell(spell)
-//       debugger
-//      })  
-     
-//    spellUL.append(spellP)
-
-//    p.innerHTML = s.title
-//    sbLI.append(p)
-//    sbUL.append(sbLI, spellUL)
-
-//       console.log(s.spells)
         const spellbookForm = document.getElementById('#spellbook-form')
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
-        spellbookDiv.classList.add('sb-card')
+        
 
         const cardDiv = document.createElement('div')
-        cardDiv.classList.add('sb-card-body')
+        
 
         const spellbookTitle = document.createElement('h3')
         spellbookTitle.classList.add('sb-name')
@@ -79,16 +59,15 @@ class Spellbook{
         spellbookDiv.append(cardDiv, spellbookTitle, spellForm)
         sbUL.append(spellbookDiv)
         
+        
    }
 
-//    static formHandler(e){
-//        e.preventDefault()
-//        console.log(e.target.value)
+   static formHandler(e) {
+       e.preventDefault();
+       const title = document.querySelector("#title").value
+       Spellbook.postSpellbook(title)
        
-//        const title = document.querySelector("title").value
-//        debugger
-//        Spellbook.postSpellbook(title)
-//    }
+   }
 
    static postSpellbook(title){
     let bodyData = {title} 
@@ -102,10 +81,11 @@ class Spellbook{
     }
     fetch(spellbookURL, configObject)
     .then(resp => resp.json())
-    .then(sb => {
-        let newSpellbook = new Spellbook(spellbook)
+    .then(sb =>  { debugger
+        let newSpellbook = new Spellbook(sb)
         newSpellbook.renderSpellbook()
-    })
+        
+    }) 
    }
    
 }
