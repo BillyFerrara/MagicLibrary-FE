@@ -13,7 +13,7 @@ class Spell {
 
     static createSpell(e){
         e.preventDefault()
-
+        console.log('Create Spell')
         
     }
   
