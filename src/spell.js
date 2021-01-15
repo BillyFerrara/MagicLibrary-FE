@@ -21,6 +21,8 @@ class Spell {
         console.log(spellTitle)
         console.log(spellDescription)
         console.log(spellDamageType)
+
+        e.target.reset()
         
     }
   
