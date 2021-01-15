@@ -56,17 +56,19 @@ class Spellbook{
         `
         spellForm.addEventListener("submit", Spell.createSpell)
 
-        spellbookDiv.append(cardDiv, spellbookTitle, spellForm)
+        
+        spellbookDiv.append(spellbookTitle, spellForm)
         sbUL.append(spellbookDiv)
+        
         
         
    }
 
    static formHandler(e) {
-       e.preventDefault();
+       e.preventDefault()
        const title = document.querySelector("#title").value
        Spellbook.postSpellbook(title)
-       
+       e.target.reset()
    }
 
    static postSpellbook(title){
@@ -81,7 +83,7 @@ class Spellbook{
     }
     fetch(spellbookURL, configObject)
     .then(resp => resp.json())
-    .then(sb =>  { debugger
+    .then(sb =>  {
         let newSpellbook = new Spellbook(sb)
         newSpellbook.renderSpellbook()
         

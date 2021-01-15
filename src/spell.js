@@ -1,10 +1,20 @@
 class Spell {
+
+    static allSpells = []
+
     constructor (spell){
-        this.title = title,
-        this.description = description,
-        this.damage_type = damage_type;
+        this.title = spell.title,
+        this.description = spell.description,
+        this.damage_type = spell.damage_type
+
+        Spell.allSpells.push()
 
     }
-}
 
-//console.log('spell')
+    static createSpell(e){
+        e.preventDefault()
+
+        
+    }
+  
+}
