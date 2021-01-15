@@ -13,7 +13,14 @@ class Spell {
 
     static createSpell(e){
         e.preventDefault()
-        console.log('Create Spell')
+        
+        const spellTitle = e.target.children[2].value
+        const spellDescription = e.target.children[5].value
+        const spellDamageType = e.target.children[8].value
+
+        console.log(spellTitle)
+        console.log(spellDescription)
+        console.log(spellDamageType)
         
     }
   
