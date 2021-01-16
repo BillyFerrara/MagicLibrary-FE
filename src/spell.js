@@ -19,7 +19,7 @@ class Spell {
         let spellDamageType = e.target.children[8].value
         //const spellBookID = parseInt(e.target.parentElement.id)
         //let spellList = document.createElement('ul')
-
+        
         console.log(spellTitle)
         console.log(spellDescription)
         console.log(spellDamageType)
@@ -50,9 +50,9 @@ class Spell {
                 "accept" : "application/json"
             },
             body: JSON.stringify({
-                spellTitle: title,
-                spellDescription: description,
-                spellDamageType: damage_type
+                spellTitle: spellTitle,
+                spellDescription: spellDescription,
+                spellDamageType: spellDamageType
 
             })
         }
@@ -60,7 +60,7 @@ class Spell {
         .then(resp => resp.json())
         .then(spell => {
 
-            let newSpell = new Spell(spellTitle, spellDescription, spellDamageType)
+            let newSpell = new Spell(spell.attributes)
             
         })
     }
