@@ -33,6 +33,7 @@ class Spellbook{
         const spellbookForm = document.getElementById('#spellbook-form')
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
+        const spellLI = document.createElement('li')
         
 
         const cardDiv = document.createElement('div')
@@ -41,6 +42,7 @@ class Spellbook{
         const spellbookTitle = document.createElement('h3')
         spellbookTitle.classList.add('sb-name')
         spellbookTitle.innerText = `Spellbook Title: ${this.title}`
+        spellbookTitle.append(spellLI)
 
         const spellForm = document.createElement('form')
         spellForm.classList.add('form-container')
