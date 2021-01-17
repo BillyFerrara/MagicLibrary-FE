@@ -2,11 +2,11 @@ class Spell {
 
     static allSpells = []
 
-    constructor (spellTitle, spellDescription, spellDamageType, spellBookID){
-        this.title = spellTitle,
-        this.description = spellDescription,
-        this.spellDamageType = spellDamageType,
-        this.spellBookID = spellBookID
+    constructor (spell){
+        this.title = spell.title,
+        this.description = spell.description,
+        this.spellDamageType = spell.damage_type,
+        //this.spellBookID = spellBookID
 
         Spell.allSpells.push(this)
 
@@ -28,10 +28,9 @@ class Spell {
         console.log(spellDamageType)
         console.log(spellBookID)
 
-        // const spell = Spell.submitSpell(spellTitle, spellDescription, spellDamageType)
-
-        
         Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID)
+        
+
         //e.target.reset()
         debugger
        
@@ -48,11 +47,11 @@ class Spell {
     static submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID) {
 
         let bodyData = {spellTitle, spellDescription, spellDamageType, spellBookID}
-        const configObj = {
+        let configObj = {
             method: "POST",
             headers: {
-                "content-type": "application/json",
-                "accept": "application/json"
+                "content-type":"application/json",
+                "accept":"application/json"
             },
             body: JSON.stringify(bodyData)
             // ({ spell: {
@@ -65,9 +64,9 @@ class Spell {
         }
         fetch(spellURL, configObj)
         .then(resp => resp.json())
-        .then(spell => {
+        .then(spell  => {
             //debugger
-            let newSpell = new Spell(spellTitle, spellDescription, spellDamageType, spellBookID)
+            let newSpell = new Spell(spell)
             console.log(newSpell)
             
         })
