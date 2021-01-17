@@ -2,10 +2,11 @@ class Spell {
 
     static allSpells = []
 
-    constructor (spell){
-        this.title = spell.title,
-        this.description = spell.description,
-        this.damage_type = spell.damage_type
+    constructor (spellTitle, spellDescription, spellDamageType, spellBookID){
+        this.title = spellTitle,
+        this.description = spellDescription,
+        this.spellDamageType = spellDamageType,
+        this.spellBookID = spellBookID
 
         Spell.allSpells.push(this)
 
@@ -17,19 +18,22 @@ class Spell {
         let spellTitle = e.target.children[2].value
         let spellDescription = e.target.children[5].value
         let spellDamageType = e.target.children[8].value
-        //const spellBookID = parseInt(e.target.parentElement.id)
+        const spellBookID = parseInt(e.target.parentElement.dataset.id)
+
+        
         //let spellList = document.createElement('ul')
         
         console.log(spellTitle)
         console.log(spellDescription)
         console.log(spellDamageType)
-       //console.log(spellBookID)
+        console.log(spellBookID)
 
         // const spell = Spell.submitSpell(spellTitle, spellDescription, spellDamageType)
 
         
-        Spell.submitSpell(spellTitle, spellDescription, spellDamageType)
-        e.target.reset()
+        Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID)
+        //e.target.reset()
+        debugger
        
         
     }
@@ -41,26 +45,30 @@ class Spell {
     
     // }
 
-    static submitSpell(spellTitle, spellDescription, spellDamageType) {
+    static submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID) {
 
-        const configObject = {
-            method: 'POST',
+        let bodyData = {spellTitle, spellDescription, spellDamageType, spellBookID}
+        const configObj = {
+            method: "POST",
             headers: {
-                "Content-Type" : "application/json",
-                "accept" : "application/json"
+                "content-type": "application/json",
+                "accept": "application/json"
             },
-            body: JSON.stringify({
-                spellTitle: spellTitle,
-                spellDescription: spellDescription,
-                spellDamageType: spellDamageType
+            body: JSON.stringify(bodyData)
+            // ({ spell: {
+            //     spellTitle: spellTitle,
+            //     spellDescription: spellDescription,
+            //     spellDamageType: spellDamageType,
+            //     spellBookID: spellBookID}
 
-            })
+            // })
         }
-        fetch(spellURL, configObject)
+        fetch(spellURL, configObj)
         .then(resp => resp.json())
         .then(spell => {
-
-            let newSpell = new Spell(spell.attributes)
+            //debugger
+            let newSpell = new Spell(spellTitle, spellDescription, spellDamageType, spellBookID)
+            console.log(newSpell)
             
         })
     }

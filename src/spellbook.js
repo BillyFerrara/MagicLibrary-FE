@@ -5,6 +5,7 @@ class Spellbook{
     constructor(spellbook) {
         this.title = spellbook.title
         this.spells = spellbook.spells
+        this.id = spellbook.id
 
         Spellbook.allSpellbooks.push(this)
     }
@@ -33,13 +34,15 @@ class Spellbook{
         const spellbookForm = document.getElementById('#spellbook-form')
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
+        spellbookDiv.dataset.id = this.id 
         const spellLI = document.createElement('li')
         
 
-        const cardDiv = document.createElement('div')
+        //const cardDiv = document.createElement('div')
         
 
         const spellbookTitle = document.createElement('h3')
+       
         spellbookTitle.classList.add('sb-name')
         spellbookTitle.innerText = `Spellbook Title: ${this.title}`
         spellbookTitle.append(spellLI)
