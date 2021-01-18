@@ -46,21 +46,21 @@ class Spell {
 
     static submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID) {
 
-        let bodyData = {spellTitle, spellDescription, spellDamageType, spellBookID}
+        //let bodyData = {spell}
         let configObj = {
             method: "POST",
             headers: {
                 "content-type":"application/json",
                 "accept":"application/json"
             },
-            body: JSON.stringify(bodyData)
-            // ({ spell: {
-            //     spellTitle: spellTitle,
-            //     spellDescription: spellDescription,
-            //     spellDamageType: spellDamageType,
-            //     spellBookID: spellBookID}
+            body: JSON.stringify({
+            
+                title: spellTitle,
+                description: spellDescription,
+                damage_type: spellDamageType,
+                //spellBookID: spellBookID
 
-            // })
+            })
         }
         fetch(spellURL, configObj)
         .then(resp => resp.json())
