@@ -55,14 +55,14 @@ class Spell {
         spellLI.innerText = `${this.title}`
         spellLI.dataset.id = this.spellbook_id
 
-        spellD.innerText = `${this.description}`
-        spellDT.innerText = `${this.spellDamageType}`
+        spellD.innerText = `Description: ${this.description}`
+        spellDT.innerText = `Damage Type: ${this.spellDamageType}`
         //debugger
         
         spellLI.append(spellD, spellDT)
         spellDiv.append(spellLI)
         spellList.append(spellLI)
-        debugger
+        //debugger
         
     }
 
