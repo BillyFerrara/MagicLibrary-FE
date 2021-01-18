@@ -6,7 +6,7 @@ class Spell {
         this.title = spell.title,
         this.description = spell.description,
         this.spellDamageType = spell.damage_type,
-        //this.spellBookID = spellBookID
+        this.spellbookID = spell.spellbook_id
 
         Spell.allSpells.push(this)
 
@@ -18,7 +18,8 @@ class Spell {
         let spellTitle = e.target.children[2].value
         let spellDescription = e.target.children[5].value
         let spellDamageType = e.target.children[8].value
-        const spellBookID = parseInt(e.target.parentElement.dataset.id)
+        let spellBookID = parseInt(e.target.parentElement.dataset.id)
+        debugger
 
         
         //let spellList = document.createElement('ul')
@@ -31,8 +32,8 @@ class Spell {
         Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID)
         
 
-        //e.target.reset()
-        debugger
+        e.target.reset()
+        //debugger
        
         
     }
@@ -58,7 +59,7 @@ class Spell {
                 title: spellTitle,
                 description: spellDescription,
                 damage_type: spellDamageType,
-                //spellBookID: spellBookID
+                spellbook_id: spellBookID
 
             })
         }
