@@ -22,7 +22,7 @@ class Spell {
         let spellbookID = parseInt(e.target.parentElement.dataset.id)
 
         let spellList = e.target.nextElementSibling
-        debugger
+        //debugger
 
         
         //let spellList = document.createElement('ul')
@@ -33,10 +33,10 @@ class Spell {
         console.log(spellbookID)
 
         Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList)
-        
+        debugger
 
         e.target.reset()
-        //debugger
+        
        
         
     }
@@ -45,10 +45,17 @@ class Spell {
 
     renderSpell(spellList) {
         const spellLI = document.createElement('li')
-        spellLI.dataset.id = this.spellbook_id
-        spellLI.innerText = `${this.title, this.description, this.damage_type}`
+        const spellDiv = document.createElement('div')
+        spellDiv.dataset.id = this.id
 
+        debugger
+        spellLI.innerText = `${this.title, this.description, this.damage_type}`
+        spellLI.dataset.id = this.spellbook_id
+        
+        
+        spellDiv.append(spellLI)
         spellList.append(spellLI)
+        
     }
 
     static submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList) {
