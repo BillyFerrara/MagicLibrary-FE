@@ -48,10 +48,10 @@ class Spell {
         const spellDiv = document.createElement('div')
         spellDiv.dataset.id = this.id
 
-        debugger
-        spellLI.innerText = `${this.title, this.description, this.damage_type}`
+       
+        spellLI.innerText = `${this.title}, ${this.description}, ${this.damage_type}`
         spellLI.dataset.id = this.spellbook_id
-        
+        //debugger
         
         spellDiv.append(spellLI)
         spellList.append(spellLI)
