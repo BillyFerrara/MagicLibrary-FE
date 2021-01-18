@@ -33,7 +33,7 @@ class Spell {
         console.log(spellbookID)
 
         Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList)
-        debugger
+        
 
         e.target.reset()
         
@@ -48,13 +48,21 @@ class Spell {
         const spellDiv = document.createElement('div')
         spellDiv.dataset.id = this.id
 
+        const spellD = document.createElement('p')
+        const spellDT = document.createElement('p')
+
        
-        spellLI.innerText = `${this.title}, ${this.description}, ${this.damage_type}`
+        spellLI.innerText = `${this.title}`
         spellLI.dataset.id = this.spellbook_id
+
+        spellD.innerText = `${this.description}`
+        spellDT.innerText = `${this.spellDamageType}`
         //debugger
         
+        spellLI.append(spellD, spellDT)
         spellDiv.append(spellLI)
         spellList.append(spellLI)
+        debugger
         
     }
 
