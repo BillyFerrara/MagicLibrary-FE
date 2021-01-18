@@ -18,7 +18,10 @@ class Spell {
         let spellTitle = e.target.children[2].value
         let spellDescription = e.target.children[5].value
         let spellDamageType = e.target.children[8].value
-        let spellBookID = parseInt(e.target.parentElement.dataset.id)
+
+        let spellbookID = parseInt(e.target.parentElement.dataset.id)
+
+        let spellList = e.target.nextElementSibling
         debugger
 
         
@@ -27,9 +30,9 @@ class Spell {
         console.log(spellTitle)
         console.log(spellDescription)
         console.log(spellDamageType)
-        console.log(spellBookID)
+        console.log(spellbookID)
 
-        Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID)
+        Spell.submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList)
         
 
         e.target.reset()
@@ -38,14 +41,17 @@ class Spell {
         
     }
 
-    // static renderSpell(spellList) {
-    // const sTitle = this.title
-    // const sDescription = this.description
-    // const sDamageType = this.damage_type
     
-    // }
 
-    static submitSpell(spellTitle, spellDescription, spellDamageType, spellBookID) {
+    renderSpell(spellList) {
+        const spellLI = document.createElement('li')
+        spellLI.dataset.id = this.spellbook_id
+        spellLI.innerText = `${this.title, this.description, this.damage_type}`
+
+        spellList.append(spellLI)
+    }
+
+    static submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList) {
 
         //let bodyData = {spell}
         let configObj = {
@@ -59,7 +65,7 @@ class Spell {
                 title: spellTitle,
                 description: spellDescription,
                 damage_type: spellDamageType,
-                spellbook_id: spellBookID
+                spellbook_id: spellbookID
 
             })
         }
@@ -69,7 +75,7 @@ class Spell {
             //debugger
             let newSpell = new Spell(spell)
             console.log(newSpell)
-            
+            newSpell.renderSpell(spellList)
         })
     }
   

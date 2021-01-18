@@ -3,9 +3,9 @@ class Spellbook{
     static allSpellbooks = []
 
     constructor(spellbook) {
+        this.id = spellbook.id
         this.title = spellbook.title
         this.spells = spellbook.spells
-        this.id = spellbook.id
 
         Spellbook.allSpellbooks.push(this)
     }
@@ -31,10 +31,10 @@ class Spellbook{
 
      renderSpellbook(){
 
-        const spellbookForm = document.getElementById('#spellbook-form')
+        //const spellbookForm = document.getElementById('#spellbook-form')
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
-        spellbookDiv.dataset.id = this.id 
+        spellbookDiv.dataset.id = this.id
         const spellLI = document.createElement('li')
         
 
@@ -42,7 +42,6 @@ class Spellbook{
         
 
         const spellbookTitle = document.createElement('h3')
-       
         spellbookTitle.classList.add('sb-name')
         spellbookTitle.innerText = `Spellbook Title: ${this.title}`
         spellbookTitle.append(spellLI)
@@ -61,8 +60,13 @@ class Spellbook{
         `
         spellForm.addEventListener("submit", Spell.createSpell)
 
+        const spellList = document.createElement('ul')
+        this.spells.forEach(spell => {
+            let spellObj = new Spell(spell)
+            spellObj.renderSpell(spellList)
+        })
         
-        spellbookDiv.append(spellbookTitle, spellForm)
+        spellbookDiv.append(spellbookTitle, spellForm, spellList)
         sbUL.append(spellbookDiv)
         
         
@@ -90,7 +94,7 @@ class Spellbook{
     .then(resp => resp.json())
     .then(sb =>  {
         let newSpellbook = new Spellbook(sb)
-        newSpellbook.renderSpellbook()
+        newSpellbook.renderSpellbook(sb)
         
     }) 
    }
