@@ -10,20 +10,34 @@ class Spellbook{
         Spellbook.allSpellbooks.push(this)
     }
 
-    static fetchSpellbook() {
-        fetch(spellbookURL)
-        .then(res => res.json())
-        .then(sb => 
-            sb.forEach(spellbook => {
-            let newSpellbook = new Spellbook(spellbook)
-        console.log(newSpellbook)
+//     static fetchSpellbook() {
+//         fetch(spellbookURL)
+//         .then(res => res.json())
+//         .then(sb => 
+//             sb.forEach(spellbook => {
+//             let newSpellbook = new Spellbook(spellbook)
+//         console.log(newSpellbook)
         
-        this.renderSpellbooks()
-        })) 
-}
+//         newSpellbook.renderSpellbooks()
+//         })) 
+// }
+
+static fetchSpellbook() {
+    fetch(spellbookURL)
+        .then(res => res.json())
+        .then(sb =>
+            sb.forEach(spellbook => {
+                let newSpellbook = new Spellbook(spellbook)
+                newSpellbook.renderSpellbook()
+            }
+        )
+    )
+} 
 
     static renderSpellbooks(){
+        
         for(let spellbook of this.allSpellbooks){
+            
             spellbook.renderSpellbook()
             
         }
@@ -31,14 +45,11 @@ class Spellbook{
 
      renderSpellbook(){
 
-        //const spellbookForm = document.getElementById('#spellbook-form')
+        
         const sbUL = document.getElementById('spellbook-list')
         const spellbookDiv = document.createElement('div')
         spellbookDiv.dataset.id = this.id
         const spellLI = document.createElement('li')
-        
-
-        //const cardDiv = document.createElement('div')
         
 
         const spellbookTitle = document.createElement('h3')
@@ -58,7 +69,9 @@ class Spellbook{
             <input type="text" id="damage_type" name="damage_type">
             <input id="create-spell" type="submit" name="submit" value="Create Spell">
         `
-        spellForm.addEventListener("submit", Spell.createSpell)
+        // spellForm.addEventListener("submit", Spell.createSpell)
+
+        spellForm.addEventListener("submit", (e) => { Spell.createSpell(e) });
 
         const spellList = document.createElement('ul')
         this.spells.forEach(spell => {
@@ -94,7 +107,7 @@ class Spellbook{
     .then(resp => resp.json())
     .then(sb =>  {
         let newSpellbook = new Spellbook(sb)
-        newSpellbook.renderSpellbook(sb)
+        newSpellbook.renderSpellbook()
         
     }) 
    }

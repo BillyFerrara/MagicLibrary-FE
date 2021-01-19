@@ -12,6 +12,16 @@ class Spell {
 
     }
 
+    // static fetchSpell() {
+    //     fetch(spellURL)
+    //     .then(res => res.json())
+    //     .then(s => {
+    //         s.forEach(spell =>{
+    //             let newSpell = new Spell(spell)
+    //         })
+    //     })
+    // }
+
     static createSpell(e){
         e.preventDefault()
         
@@ -68,21 +78,37 @@ class Spell {
 
     static submitSpell(spellTitle, spellDescription, spellDamageType, spellbookID, spellList) {
 
-        //let bodyData = {spell}
+        
+        // let configObj = {
+        //     method: "POST",
+        //     headers: {
+        //         "content-type":"application/json",
+        //         "accept":"application/json"
+        //     },
+        //     body: JSON.stringify({
+            
+        //         title: spellTitle,
+        //         description: spellDescription,
+        //         damage_type: spellDamageType,
+        //         spellbook_id: spellbookID
+
+        //     })
+
         let configObj = {
             method: "POST",
             headers: {
-                "content-type":"application/json",
-                "accept":"application/json"
+              "content-type":"application/json",
+              "accept":"application/json"
             },
             body: JSON.stringify({
-            
+              spell: {
                 title: spellTitle,
                 description: spellDescription,
                 damage_type: spellDamageType,
                 spellbook_id: spellbookID
-
-            })
+              }
+            }
+          )
         }
         fetch(spellURL, configObj)
         .then(resp => resp.json())

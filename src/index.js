@@ -7,6 +7,6 @@ const createSpellbookForm = document.getElementById("Spellbook-form")
 
 Spellbook.fetchSpellbook();
 
+
 createSpellbookForm.addEventListener('submit', Spellbook.formHandler)
 
-const spellbookID = document.getElementById('#title')
